@@ -1,53 +1,53 @@
 //##########################################################################################################
-//	Zesty Helper Functionality
+//  Zesty Helper Functionality
 //##########################################################################################################
 
 (function() {
-	
-	if (document.addEventListener) {    
-		
-	// ----------------------------------------------------------------------
-	//	On-load event
-	// ----------------------------------------------------------------------
-		
-		window.addEventListener('load',function() {
-			
-		// ----------------------------------------------------------------------
-		//	Collect all link tags
-		// ----------------------------------------------------------------------
-			
-			var linkTags = document.getElementsByTagName('a');
 
-			
-		// ----------------------------------------------------------------------
-		//	Remove titles temporarily when you hover over them
-		//	(to prevent yellow pop-ups blocking text)
-		// ----------------------------------------------------------------------
-			
-			var linkTagOnMouseOver = function() { this.hiddenTitle = this.title; this.title = ''; },
-				linkTagOnMouseOut = function() { this.title = this.hiddenTitle; this.title = this.hiddenTitle; this.hiddenTitle = null; };
+    if (document.addEventListener) {
 
-			for (var i = 0; i < linkTags.length; ++i) {
-				linkTags[i].addEventListener('mouseover',linkTagOnMouseOver);
-				linkTags[i].addEventListener('mouseout',linkTagOnMouseOut);
-			}
-			
-		// ----------------------------------------------------------------------
-		//	Add '.at' class to all '<a>' nodes that match the current URL
-		// ----------------------------------------------------------------------
-		
-			for (var key in linkTags) {
-				if (linkTags.hasOwnProperty && linkTags.hasOwnProperty(key) && linkTags[key].getAttribute) {
-					var href = linkTags[key].getAttribute('href');
-					if (window.location.pathname.match(href) && href.length <= window.location.pathname.length && !linkTags[key].className.match('zesty_link')) {
-						if (href != '/' && linkTags[key].parentNode.className != 'crumb') linkTags[key].className += ' at';
-					}
-				}
-			}
-		
-		});
-	
-	} // end of if document.addEventListener
+    // ----------------------------------------------------------------------
+    //  On-load event
+    // ----------------------------------------------------------------------
+
+        window.addEventListener('load',function() {
+
+        // ----------------------------------------------------------------------
+        //  Collect all link tags
+        // ----------------------------------------------------------------------
+
+            var linkTags = document.getElementsByTagName('a');
+
+
+        // ----------------------------------------------------------------------
+        //  Remove titles temporarily when you hover over them
+        //  (to prevent yellow pop-ups blocking text)
+        // ----------------------------------------------------------------------
+
+            var linkTagOnMouseOver = function() { this.hiddenTitle = this.title; this.title = ''; },
+                linkTagOnMouseOut = function() { this.title = this.hiddenTitle; this.title = this.hiddenTitle; this.hiddenTitle = null; };
+
+            for (var i = 0; i < linkTags.length; ++i) {
+                linkTags[i].addEventListener('mouseover',linkTagOnMouseOver);
+                linkTags[i].addEventListener('mouseout',linkTagOnMouseOut);
+            }
+
+        // ----------------------------------------------------------------------
+        //  Add '.at' class to all '<a>' nodes that match the current URL
+        // ----------------------------------------------------------------------
+
+            for (var key in linkTags) {
+                if (linkTags.hasOwnProperty && linkTags.hasOwnProperty(key) && linkTags[key].getAttribute) {
+                    var href = linkTags[key].getAttribute('href');
+                    if (window.location.pathname.match(href) && href.length <= window.location.pathname.length && !linkTags[key].className.match('zesty_link')) {
+                        if (href != '/' && linkTags[key].parentNode.className != 'crumb') linkTags[key].className += ' at';
+                    }
+                }
+            }
+
+        });
+
+    } // end of if document.addEventListener
 
 })();
 
