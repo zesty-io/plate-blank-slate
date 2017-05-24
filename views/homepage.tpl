@@ -1,7 +1,7 @@
 <div class="heading-image">
-    {{if {page.image} > 0}}
+    {{if {page.image} }}
         <img src="{{ page.image.getImage(400,350,crop) }}" align="left" alt="{{ page.title }} Image" itemprop="image primaryImageOfPage" />
-    {{/if}}
+    {{end-if}}
 </div>
 
 <div class="page-content" itemprop="mainContentOfPage">
